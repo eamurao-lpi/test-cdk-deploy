@@ -7,8 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        path: 'src'
+        uses: actions/checkout@v3
       - name: Configure aws credentials
         uses: aws-actions/configure-aws-credentials@master
         with:
@@ -26,8 +25,8 @@ jobs:
       - name: Npm Version
         run: npm -v
       - name: Install project dependecies
-        run: cd src && npm i
+        run: npm i
       - name: CDK Synth
-        run: cd src && npm run cdk synth -v
+        run: npm run cdk synth -v
       - name: CDK Deploy
-        run: cd src && npm run cdk deploy -v --all --require-approval never
+        run: npm run cdk deploy -v --all --require-approval never
